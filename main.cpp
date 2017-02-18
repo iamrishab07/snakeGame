@@ -28,14 +28,18 @@ void Draw(){
 	for(int i=0;i<width;i++)
 		cout<< "#";
 	cout<<endl;
-
+// printing the 
 	for(int i = 0;i<height;i++){
 		for (int j = 0; j < width; j++)
 		{
 			if(j == 0)cout<<"#";
 			
-			else if( j==width-1) cout<<"#";
+			if(i==y && j==x) cout<<"0";
+			else if(i==fruitY && j == fruitX)
+				cout<<"F";
 			else cout<<" ";
+			
+			if( j==width-1) cout<<"#";
 		}
 		cout<<endl;
 	}
@@ -46,7 +50,25 @@ void Draw(){
 }
 
 void Input(){
-	
+	if(_kbhit()){
+		switch(_getch()){
+			case 'a':
+				dir = LEFT;
+				break;
+			case 'd':
+				dir = RIGHT;
+				break;
+			case 'w':
+				dir = UP;
+				break;
+			case 's':
+				dir = DOWN;
+				break;
+			case 'x':
+				gameOver = true;
+				break;
+		}
+	}
 }
 
 void Logic(){
